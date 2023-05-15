@@ -1,5 +1,7 @@
 <template>
-  Unseal
+    <div class="text-white">
+      Unseal
+</div>
 </template>
 
 <script>

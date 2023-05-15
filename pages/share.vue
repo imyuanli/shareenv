@@ -1,5 +1,7 @@
 <template>
-  share
+  <div class="text-white">
+    share
+  </div>
 </template>
 
 <script>
