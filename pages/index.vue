@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full absolute top-0 bottom-0 right-0 left-0 flex flex-col items-center justify-around">
-    <div class="flex flex-col items-center justify-center max-w-2xl px-8 mt-12 mx-auto space-y-8 w-full">
+  <div class="h-full flex flex-col items-center justify-around">
+    <div class="flex flex-col items-center justify-center max-w-2xl px-4 md:px-8 mt-0 md:mt-12 mx-auto space-y-8 w-full">
       <a href="https://github.com/imyuanli/shareenv">
         <n-button round>ShareEnv 已在 Github 开源 →</n-button>
       </a>
@@ -49,7 +49,7 @@
       <section class="container mx-auto grid grid-cols-3">
         <div class="flex flex-col justify-center items-center">
           <div class="text-2xl font-bold tracking-tight text-center sm:text-5xl text-zinc-200">
-            {{numFormat(2580)}}
+            {{ numFormat(2580) }}
           </div>
           <div class="leading-6 text-center text-zinc-500">
             已加密文档
@@ -57,7 +57,7 @@
         </div>
         <div class="flex flex-col justify-center items-center">
           <div class="text-2xl font-bold tracking-tight text-center sm:text-5xl text-zinc-200">
-            {{numFormat(100)}}
+            {{ numFormat(100) }}
           </div>
           <div class="leading-6 text-center text-zinc-500">
             已解密文档

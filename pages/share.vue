@@ -1,23 +1,43 @@
 <template>
-  <div class="container px-8 mx-auto mt-12">
-    <div class="max-w-2xl mx-auto space-y-8">
+  <div class="container mx-auto px-4 md:px-8 mt-0 md:mt-12">
+    <div class="max-w-2xl mx-auto space-y-4">
       <Title text="加密并分享"/>
       <n-input
           type="textarea"
           placeholder="DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres"
       />
-      <div class="flex space-x-4">
-        <div>
-          <n-upload
-              action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-              :headers="{'naive-info': 'hello!'}"
-              :data="{'naive-data': 'cool! naive!'}"
-          >
-            <n-button size="large" class="w-full">上传文件</n-button>
-          </n-upload>
-        </div>
-        <n-input size="large" class="w-full" placeholder="读取次数"/>
-        <n-select size="large" />
+      <n-upload
+          directory-dnd
+          @change="handleUploadChange"
+          :show-file-list="false"
+      >
+        <n-upload-dragger>
+          <div style="margin-bottom: 12px">
+            <n-icon size="48" :depth="3">
+              <Archive/>
+            </n-icon>
+          </div>
+          <n-text style="font-size: 16px">
+            点击或者拖动文件到该区域来上传
+          </n-text>
+        </n-upload-dragger>
+      </n-upload>
+      <div class="grid grid-cols-1  md:grid-cols-2 gap-4">
+        <n-input size="large" placeholder="读取次数">
+          <template #suffix>
+            次
+          </template>
+        </n-input>
+        <n-input-group>
+          <n-input size="large" placeholder="可解密期限"/>
+          <n-select
+              default-value="m"
+              v-model:value="ttl"
+              :style="{ width: '30%' }"
+              size="large"
+              :options="options"
+          />
+        </n-input-group>
       </div>
       <n-button
           type="primary"
@@ -32,9 +52,28 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import Title from '../components/title'
+import {Archive} from '@vicons/ionicons5'
+import {NSelect} from  'naive-ui'
 
+import {useState} from "nuxt/app";
+
+const ttl = useState('ttl', () => 'm')
+const options = useState('ttl', () => [
+  {label:'分',value:'m'},
+  {label:'时',value:'h'},
+  {label:'天',value:'d'},
+])
+//文件上传
+const handleUploadChange = async (data) => {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const t = e.target.result
+    console.log(t)
+  };
+  reader.readAsText(data.file.file);
+}
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
-  <div class="container px-8 mx-auto mt-12">
-    <div class="max-w-2xl mx-auto space-y-8">
+  <div class="container mx-auto px-4 md:px-8 mt-0 md:mt-12">
+    <div class="max-w-2xl mx-auto space-y-4">
       <Title text="解密文档"/>
       <n-input type="text" size="large" placeholder="请输入加密的key"/>
       <n-button
