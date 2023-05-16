@@ -17,6 +17,8 @@
           directory-dnd
           @change="handleUploadChange"
           :show-file-list="false"
+          @before-upload="beforeUpload"
+
       >
         <n-upload-dragger>
           <div style="margin-bottom: 12px">
@@ -75,8 +77,10 @@
 <script setup>
 import Title from '../components/title'
 import {Archive} from '@vicons/ionicons5'
-import {NSelect} from 'naive-ui'
+import {useMessage} from 'naive-ui'
 import {useFetch, useState} from "nuxt/app";
+
+const message = useMessage()
 
 const state = useState('state', () => {
   return {
@@ -100,6 +104,14 @@ const handleUploadChange = async (data) => {
     state.value.envData = e.target.result
   };
   reader.readAsText(data.file.file);
+  message.success('文件解析成功')
+}
+
+const beforeUpload = (data) => {
+  if (data.file.file?.size > 1024 * 16) {
+    message.error('文件大小必须小于16kb')
+    return false;
+  }
 }
 
 const handleSubmit = async () => {
