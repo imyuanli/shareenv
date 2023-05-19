@@ -9,7 +9,6 @@
         </p>
         <p>ShareEnv is deployed on
           <MyLink href="https://vercel.com" text="Vercel"/>
-          <a href="https://vercel.com" class="underline hover:text-white">Vercel</a>
           and driven by
           <MyLink href="https://nuxt.com" text="Nuxt."/>
         </p>

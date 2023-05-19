@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 md:px-8 mt-0 md:mt-12">
+  <div class="container mx-auto px-4 md:px-8">
     <div class="max-w-3xl mx-auto space-y-4">
       <Title text="加密分享"/>
       <n-input

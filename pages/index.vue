@@ -1,6 +1,6 @@
 <template>
   <div class="h-full flex flex-col items-center justify-around">
-    <div class="flex flex-col items-center justify-center max-w-2xl px-4 md:px-8 mt-4 md:mt-12 mx-auto space-y-8 w-full">
+    <div class="flex flex-col items-center justify-center max-w-2xl px-4 md:px-8 mt-4 mx-auto space-y-8 w-full">
       <a href="https://github.com/imyuanli/shareenv">
         <n-button round>ShareEnv 已在 Github 开源 →</n-button>
       </a>
@@ -23,7 +23,7 @@
                 <LockOpenOutline/>
               </n-icon>
             </template>
-            解密文档
+            解密
           </n-button>
         </NuxtLink>
         <NuxtLink to="/share" class="inline-block w-full max-w-md">
@@ -39,7 +39,7 @@
                 <ArrowForwardSharp/>
               </n-icon>
             </template>
-            文档分享
+            分享
           </n-button>
         </NuxtLink>
       </div>
