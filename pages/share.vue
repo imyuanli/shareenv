@@ -61,8 +61,6 @@
           </n-input-group>
           <n-input
               v-model:value="state.password"
-              type="password"
-              show-password-on="click"
               placeholder="输入密码"
               :maxlength="4"
               clearable
@@ -86,7 +84,7 @@
           <p>您的文件我们不会做任何处理，也不会随意的对外暴露。</p>
         </n-alert>
       </div>
-      <div v-show="state.sid" class="space-x-2 h-12 flex justify-center items-center">
+      <div v-show="state.sid" class="grid grid-cols-1 gap-4">
         <n-alert :show-icon="false" class="w-full">
           {{ state.sid }}
         </n-alert>
@@ -161,7 +159,7 @@ const handleSubmit = async () => {
     }
   })
   if (data.value?.errno == 0) {
-    state.value.sid = window.location.hostname + '/unseal/' + data.value.data.sid
+    state.value.sid = window.location.origin + '/unseal/' + data.value.data.sid
   } else {
     message.error(data.value?.errmsg)
   }
