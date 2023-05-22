@@ -49,7 +49,7 @@
       <section class="container mx-auto grid grid-cols-3">
         <div class="flex flex-col justify-center items-center">
           <div class="text-2xl font-bold tracking-tight text-center sm:text-5xl text-zinc-200">
-            {{ numFormat(2580) }}
+            {{ numFormat(state.encryption_count) }}
           </div>
           <div class="leading-6 text-center text-zinc-500">
             已加密文档
@@ -57,7 +57,7 @@
         </div>
         <div class="flex flex-col justify-center items-center">
           <div class="text-2xl font-bold tracking-tight text-center sm:text-5xl text-zinc-200">
-            {{ numFormat(100) }}
+            {{ numFormat(state.decrypt_count) }}
           </div>
           <div class="leading-6 text-center text-zinc-500">
             已解密文档
@@ -78,10 +78,22 @@
 
 <script setup>
 import {ArrowForwardSharp, LockOpenOutline} from '@vicons/ionicons5'
-import {NIcon} from 'naive-ui'
+import {NIcon, useMessage} from 'naive-ui'
 import {numFormat} from '../utils/index'
+import {useLazyFetch, useState} from "nuxt/app";
+import BASE_URL from "../utils/base_url";
+
+const message = useMessage()
+const state = useState('state', () => {
+  return {
+    encryption_count: 0,
+    decrypt_count: 0,
+  }
+})
+
+const {pending, data} = await useLazyFetch(`${BASE_URL}/get_share_env_count/`)
+watch(data, (newData) => {
+  state.value.encryption_count = newData.data.encryption_count
+  state.value.decrypt_count = newData.data.decrypt_count
+})
 </script>
-
-<style scoped>
-
-</style>
