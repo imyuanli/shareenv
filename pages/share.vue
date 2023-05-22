@@ -88,16 +88,27 @@
         <n-alert :show-icon="false" class="w-full">
           {{ state.sid }}
         </n-alert>
-        <n-button
-            type="primary"
-            text-color="#fff"
-            size="large"
-            icon-placement="right"
-            class="copy-btn cols"
-            @click="handleCopy"
-        >
-          复制
-        </n-button>
+        <div class="grid grid-cols-2 gap-4">
+          <n-button
+              type="primary"
+              text-color="#fff"
+              size="large"
+          >
+            <NuxtLink to="/share" external class="inline-block w-full max-w-md">
+              重新加密
+            </NuxtLink>
+          </n-button>
+          <n-button
+              type="primary"
+              text-color="#fff"
+              size="large"
+              icon-placement="right"
+              class="copy-btn cols"
+              @click="handleCopy"
+          >
+            复制
+          </n-button>
+        </div>
       </div>
     </div>
   </div>
@@ -168,7 +179,7 @@ const handleSubmit = async () => {
 
 const handleCopy = () => {
   const clipboard = new Clipboard('.copy-btn', {
-    text: () => state.value.sid
+    text: () => `解密链接:${state.value.sid}\n${state.value.password ? `解密密码:${state.value.password}` : ''}`
   });
   clipboard.on('success', () => {
     message.success('数据已复制到剪贴板');
@@ -181,7 +192,3 @@ const handleCopy = () => {
   clipboard.onClick(event);
 }
 </script>
-
-<style scoped>
-
-</style>

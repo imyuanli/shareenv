@@ -207,7 +207,7 @@ const handleCopy = (className, text) => {
 
 //复制链接
 const handleCopyLink = () => {
-  handleCopy('.copy-link', window.location.href)
+  handleCopy('.copy-link',  `解密链接:${window.location.origin + '/unseal/' + state.value.sid}\n${state.value.password ? `解密密码:${state.value.password}` : ''}`)
 }
 
 //下载
