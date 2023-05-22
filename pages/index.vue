@@ -12,7 +12,7 @@
         您的文档在存储一段有限的时间和读取操作之前，会在浏览器中进行加密。数据永远不会离开您的浏览器。
       </p>
       <div class="w-full flex justify-center items-center space-x-4">
-        <NuxtLink to="/unseal" class="inline-block w-full max-w-md">
+        <NuxtLink to="/unseal" external class="inline-block w-full max-w-md">
           <n-button
               size="large"
               icon-placement="right"
@@ -26,7 +26,7 @@
             解密
           </n-button>
         </NuxtLink>
-        <NuxtLink to="/share" class="inline-block w-full max-w-md">
+        <NuxtLink to="/share" external class="inline-block w-full max-w-md">
           <n-button
               size="large"
               type="primary"
